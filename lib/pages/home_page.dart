@@ -7,9 +7,19 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: IntroCard(
-          text: "Hay, I'm Ivan",
+      body: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: SafeArea(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              IntroCard(text: "Djes"),
+              IntroCard(text: "Djes"),
+              IntroCard(text: "Djes")
+            ],
+          ),
         ),
       ),
     );
