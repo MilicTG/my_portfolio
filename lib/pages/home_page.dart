@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_portfolio/widgets/card/intro_card.dart';
+import 'package:my_portfolio/widgets/card/project_card.dart';
+import 'package:my_portfolio/widgets/header/header.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -7,18 +8,32 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: SafeArea(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              IntroCard(text: "Djes"),
-              IntroCard(text: "Djes"),
-              IntroCard(text: "Djes")
-            ],
+      body: SafeArea(
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                Header(),
+                SizedBox(
+                  height: 25,
+                ),
+                Text(
+                  "Projects",
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                ProjectCard(),
+              ],
+            ),
           ),
         ),
       ),
