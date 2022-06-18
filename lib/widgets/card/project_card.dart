@@ -1,13 +1,31 @@
 import 'package:flutter/material.dart';
 
 class ProjectCard extends StatelessWidget {
-  const ProjectCard({Key? key}) : super(key: key);
+  final String projectName;
+  final int projectYear;
+  final String projectImage;
+  final String projectDescription;
+
+  const ProjectCard(
+      {required this.projectName,
+      required this.projectYear,
+      this.projectImage =
+          "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+      required this.projectDescription,
+      Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 350,
+      margin: const EdgeInsets.only(
+        top: 15.0,
+        right: 25.0,
+        bottom: 25.0,
+      ),
       padding: const EdgeInsets.all(15.0),
+      height: 350,
+      width: MediaQuery.of(context).size.width / 1.3,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(15.0),
@@ -25,9 +43,9 @@ class ProjectCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                "My Projects",
-                style: TextStyle(fontSize: 18),
+              Text(
+                projectName,
+                style: const TextStyle(fontSize: 18),
               ),
               Container(
                 decoration: BoxDecoration(
@@ -35,9 +53,9 @@ class ProjectCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15.0),
                 ),
                 padding: const EdgeInsets.all(5.0),
-                child: const Text(
-                  "2022",
-                  style: TextStyle(
+                child: Text(
+                  projectYear.toString(),
+                  style: const TextStyle(
                     fontSize: 14,
                     color: Colors.white,
                   ),
@@ -52,7 +70,7 @@ class ProjectCard extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(15.0),
               child: Image.network(
-                "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+                projectImage,
                 fit: BoxFit.cover,
               ),
             ),
@@ -60,11 +78,10 @@ class ProjectCard extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          const Text(
-            """Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime sint commodi repudiandae consequuntur voluptatum laborum
-            numquam blanditiis harum""",
+          Text(
+            projectDescription,
             maxLines: 3,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 14,
               overflow: TextOverflow.ellipsis,
             ),
