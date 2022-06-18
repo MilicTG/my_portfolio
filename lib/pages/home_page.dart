@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_portfolio/example/projects.dart';
 import 'package:my_portfolio/widgets/card/project_card.dart';
 import 'package:my_portfolio/widgets/header/header.dart';
 
@@ -34,43 +35,14 @@ class HomePage extends StatelessWidget {
                   ),
                   SizedBox(
                     height: 350,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: const [
-                        ProjectCard(
-                          projectName: "My Projects",
-                          projectYear: 2022,
-                          projectImage:
-                              "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-                          projectDescription:
-                              "This is the project's description. You can write your own description here.",
-                        ),
-                        ProjectCard(
-                          projectName: "My Project",
-                          projectYear: 2022,
-                          projectDescription:
-                              "This is the project's description. You can write your own description here.",
-                          projectImage:
-                              "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-                        ),
-                        ProjectCard(
-                          projectName: "My Project",
-                          projectYear: 2022,
-                          projectDescription:
-                              "This is the project's description. You can write your own description here.",
-                          projectImage:
-                              "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-                        ),
-                        ProjectCard(
-                          projectName: "My Project",
-                          projectYear: 2022,
-                          projectDescription:
-                              "This is the project's description. You can write your own description here.",
-                          projectImage:
-                              "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-                        ),
-                      ],
-                    ),
+                    child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: projects.length,
+                        itemBuilder: (context, index) {
+                          return ProjectCard(
+                            project: projects[index],
+                          );
+                        }),
                   ),
                 ],
               ),
