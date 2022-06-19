@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:my_portfolio/models/project.dart';
 import 'package:my_portfolio/pages/project/project_details.dart';
 
+import '../../helpers/responsive.dart';
+
 class ProjectCard extends StatelessWidget {
   final Project project;
 
@@ -19,6 +21,7 @@ class ProjectCard extends StatelessWidget {
         ),
       ),
       child: Container(
+        width: 300,
         margin: const EdgeInsets.only(
           top: 15.0,
           right: 25.0,
@@ -26,7 +29,6 @@ class ProjectCard extends StatelessWidget {
         ),
         padding: const EdgeInsets.all(15.0),
         height: 350,
-        width: MediaQuery.of(context).size.width / 1.3,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(15.0),
@@ -72,9 +74,22 @@ class ProjectCard extends StatelessWidget {
                 tag: project.name,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(15.0),
-                  child: Image.network(
-                    project.imageUrl,
-                    fit: BoxFit.cover,
+                  child: Responsive(
+                    mobile: Image.network(
+                      project.imageUrl,
+                      fit: BoxFit.cover,
+                    ),
+                    tablet: Image.network(
+                      project.imageUrl,
+                      fit: BoxFit.cover,
+                    ),
+                    desktop: SizedBox(
+                      height: 350,
+                      child: Image.network(
+                        project.imageUrl,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
                 ),
               ),
